@@ -1,13 +1,17 @@
 package spring.DTO;
 
+import java.io.Serializable;
+
 import spring.domain.User;
 
-public class UserDTO {
-  private String id;
+public class UserDTO implements Serializable{
+	private static final long serialVersionUID = 1L;
+ 
+private String id;
  private  String nome;
  private  String email;
    
-  public UserDTO(User obj) {
+  public UserDTO (User obj) {
 	  id = obj.getId();
 	  nome = obj.getNome();
 	  email = obj.getEmail();
