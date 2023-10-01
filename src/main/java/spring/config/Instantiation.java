@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 
+import spring.DTO.AuthorDTO;
 import spring.Repository.PostRepository;
 import spring.Repository.UserRepository;
 import spring.domain.Post;
@@ -23,12 +24,14 @@ public class Instantiation implements CommandLineRunner{
     private PostRepository postRepository;
 	
 	@Override
-	public void run(String... args) throws Exception {
-		userRepository.deleteAll();
-	    postRepository.deleteAll();
+	public void run(String... args0) throws Exception {
+		
 	
 	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 	sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
+	
+	userRepository.deleteAll();
+    postRepository.deleteAll();
 		
 		User Dada = new User(null, "Dada","dada@gmail.com ");
 		User Dede = new User(null, "Dede","dede@gmail.com ");
@@ -36,10 +39,12 @@ public class Instantiation implements CommandLineRunner{
 		User Dodo = new User(null, "Dodo","dodo@gmail.com ");
 		User Dudu = new User(null, "Dudu","dudu@gmail.com ");
 		
-		Post post1 = new Post(null, sdf.parse("01/10/2023"),"Partiu viagem", "Vou viajar para o piaui", Dudu);
-		Post post2 = new Post(null, sdf.parse("15/10/2023"),"om dia!", "Acordei hoje feliz", Dudu);
-		
 		userRepository.saveAll(Arrays.asList(Dada,Dede,Didi,Dodo,Dudu));
+		
+		Post post1 = new Post(null, sdf.parse("01/10/2023"),"Partiu viagem", "Vou viajar para o piaui",new AuthorDTO(Dudu));
+		Post post2 = new Post(null, sdf.parse("15/10/2023"),"om dia!", "Acordei hoje feliz",new AuthorDTO(Dudu));
+		
+		
 		postRepository.saveAll(Arrays.asList( post1,post2));
 	}
 
