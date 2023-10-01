@@ -7,7 +7,7 @@ import spring.domain.User;
 public class UserDTO implements Serializable{
 	private static final long serialVersionUID = 1L;
  
-private String id;
+private Long id;
  private  String nome;
  private  String email;
    
@@ -19,11 +19,11 @@ private String id;
 	  
   }
 
-public String getId() {
+public Long getId() {
 	return id;
 }
 
-public void setId(String id) {
+public void setId(Long id) {
 	this.id = id;
 }
 

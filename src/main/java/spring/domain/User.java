@@ -12,7 +12,7 @@ public class User implements Serializable{
 
 
       @Id
-      private String id;
+      private Long id;
       private String nome;
       private String email;
 
@@ -20,16 +20,16 @@ public User() {
 	
 }
 
-public User(String id, String nome, String email) {
+public User(Long id, String nome, String email) {
 	super();
 	this.id = id;
 	this.nome = nome;
 	this.email = email;
 }
-public String getId() {
+public Long getId() {
 	return id;
 }
-public void setId(String id) {
+public void setId(Long id) {
 	this.id = id;
 }
 public String getNome() {
