@@ -23,7 +23,7 @@ public class UserService {
 	}
 	
 	
-	public User findById(Long id) {
+	public User findById(String id) {
 		Optional<User> obj = repo.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
 		}
@@ -33,7 +33,7 @@ public User insert(User obj) {
 	return repo.save(obj);
 }
 
-public void delete(Long id) {
+public void delete(String id) {
 	findById(id);
 	repo.deleteById(id);
 }

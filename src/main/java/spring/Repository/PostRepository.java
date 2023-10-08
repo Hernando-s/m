@@ -10,7 +10,7 @@ import spring.domain.Post;
 
 
  
-public interface PostRepository extends MongoRepository<Post, Long>{
+public interface PostRepository extends MongoRepository<Post, String>{
      @Query("{'Title': { $regex: ?0, $options: 'i'}}")
 	List<Post> searchTitle(String text);
 		

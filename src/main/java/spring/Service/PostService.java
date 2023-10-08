@@ -19,7 +19,7 @@ public class PostService {
 	
 	
 	
-	public Post findById(Long id) {
+	public Post findById(String id) {
 		Optional<Post> obj = repo.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
 		}

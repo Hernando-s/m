@@ -34,19 +34,19 @@ public class Instantiation implements CommandLineRunner{
 	userRepository.deleteAll();
     postRepository.deleteAll();
 		
+        User maria = new User(null, "Maria Brown","maria@gmail.com ");
 		User alex = new User(null, "Alex Green","Alex@gmail.com ");
-		User maria = new User(null, "Maria Brown","maria@gmail.com ");
 		User bob = new User(null, "Bob Grey","bob@gmail.com ");
 		
 		
-		userRepository.saveAll(Arrays.asList(alex,maria,bob ));
+		userRepository.saveAll( Arrays.asList(maria,alex ,bob ));
 		
-		Post post1 = new Post(null, sdf.parse("01/10/2023"),"Partiu viagem", "Vou viajar para o piaui",new AuthorDTO(maria));
-		Post post2 = new Post(null, sdf.parse("15/10/2023"),"om dia!", "Acordei hoje feliz",new AuthorDTO(maria));
+		Post post1 = new Post(null, sdf.parse("21/03/2018"),"Partiu viagem", "Vou viajar para o piaui",new AuthorDTO(maria));
+		Post post2 = new Post(null, sdf.parse("23/03/2018"),"Bom dia!", "Acordei feliz feliz!",new AuthorDTO(maria));
 		
-		CommentDTO c1 = new CommentDTO("Boa viagem mano", sdf.parse("02/10/2023"),new AuthorDTO(alex));
-		CommentDTO c2 = new CommentDTO("Aproveite", sdf.parse("02/10/2023"),new AuthorDTO(bob));
-		CommentDTO c3 = new CommentDTO("Tenha um otimo dia", sdf.parse("12/10/2023"),new AuthorDTO(alex));
+		CommentDTO c1 = new CommentDTO("Boa viagem mano", sdf.parse("21/03/2018"),new AuthorDTO(alex));
+		CommentDTO c2 = new CommentDTO("Aproveite", sdf.parse("22/03/2018"),new AuthorDTO(bob));
+		CommentDTO c3 = new CommentDTO("Tenha um otimo dia", sdf.parse("23/03/2018"),new AuthorDTO(alex));
 		
         post1.getComments().addAll(Arrays.asList(c1,c2));
         post2.getComments().addAll(Arrays.asList(c3));

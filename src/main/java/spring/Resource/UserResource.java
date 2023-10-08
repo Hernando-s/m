@@ -35,7 +35,7 @@ public class UserResource {
     }
     
     @GetMapping(value = "/{id}")
-    public ResponseEntity<User> finById(@PathVariable Long id){
+    public ResponseEntity<User> finById(@PathVariable String id){
     	User obj = service.findById(id);
     	return ResponseEntity.ok().body(obj);
     }
@@ -50,7 +50,7 @@ public class UserResource {
     }
     
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long id){
+    public ResponseEntity<Void> delete(@PathVariable String id){
     	service.delete(id);
     	return ResponseEntity.noContent().build();
     }
@@ -63,7 +63,7 @@ public class UserResource {
     }
     
    @GetMapping(value = "/{id}/posts")
-   public ResponseEntity<List<Post>> findPosts(@PathVariable Long id){
+   public ResponseEntity<List<Post>> findPosts(@PathVariable String id){
         User obj = service.findById(id);
     	return ResponseEntity.ok().body(obj.getPosts());
     	   

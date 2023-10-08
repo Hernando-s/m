@@ -24,7 +24,7 @@ public class PostResource {
   
     
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Post> finById(@PathVariable Long id){
+    public ResponseEntity<Post> finById(@PathVariable String id){
     	Post obj = service.findById(id);
     	return ResponseEntity.ok().body(obj);
     }

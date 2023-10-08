@@ -6,7 +6,7 @@ import spring.domain.User;
 
 
  
-public interface UserRepository extends MongoRepository<User, Long>{
+public interface UserRepository extends MongoRepository<User, String>{
 
 	
 	
