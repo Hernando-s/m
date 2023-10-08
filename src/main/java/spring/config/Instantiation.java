@@ -9,6 +9,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 
 import spring.DTO.AuthorDTO;
+import spring.DTO.CommentDTO;
 import spring.Repository.PostRepository;
 import spring.Repository.UserRepository;
 import spring.domain.Post;
@@ -33,21 +34,27 @@ public class Instantiation implements CommandLineRunner{
 	userRepository.deleteAll();
     postRepository.deleteAll();
 		
-		User Dada = new User(null, "Dada","dada@gmail.com ");
-		User Dede = new User(null, "Dede","dede@gmail.com ");
-		User Didi = new User(null, "Didi","didi@gmail.com ");
-		User Dodo = new User(null, "Dodo","dodo@gmail.com ");
-		User Dudu = new User(null, "Dudu","dudu@gmail.com ");
-		
-		userRepository.saveAll(Arrays.asList(Dada,Dede,Didi,Dodo,Dudu));
-		
-		Post post1 = new Post(null, sdf.parse("01/10/2023"),"Partiu viagem", "Vou viajar para o piaui",new AuthorDTO(Dudu));
-		Post post2 = new Post(null, sdf.parse("15/10/2023"),"om dia!", "Acordei hoje feliz",new AuthorDTO(Dudu));
+		User alex = new User(null, "Alex Green","Alex@gmail.com ");
+		User maria = new User(null, "Maria Brown","maria@gmail.com ");
+		User bob = new User(null, "Bob Grey","bob@gmail.com ");
 		
 		
+		userRepository.saveAll(Arrays.asList(alex,maria,bob ));
+		
+		Post post1 = new Post(null, sdf.parse("01/10/2023"),"Partiu viagem", "Vou viajar para o piaui",new AuthorDTO(maria));
+		Post post2 = new Post(null, sdf.parse("15/10/2023"),"om dia!", "Acordei hoje feliz",new AuthorDTO(maria));
+		
+		CommentDTO c1 = new CommentDTO("Boa viagem mano", sdf.parse("02/10/2023"),new AuthorDTO(alex));
+		CommentDTO c2 = new CommentDTO("Aproveite", sdf.parse("02/10/2023"),new AuthorDTO(bob));
+		CommentDTO c3 = new CommentDTO("Tenha um otimo dia", sdf.parse("12/10/2023"),new AuthorDTO(alex));
+		
+        post1.getComments().addAll(Arrays.asList(c1,c2));
+        post2.getComments().addAll(Arrays.asList(c3));
+        
 		postRepository.saveAll(Arrays.asList( post1,post2));
-		Dudu.getPosts().addAll(Arrays.asList(post1, post2));
-		userRepository.save(Dudu);
+		
+		maria.getPosts().addAll(Arrays.asList(post1, post2));
+		userRepository.save(maria);
 	}
 
 }
