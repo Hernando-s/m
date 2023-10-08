@@ -10,7 +10,7 @@ import spring.domain.Post;
  
 public interface PostRepository extends MongoRepository<Post, Long>{
 
-  List<Post> findByTitleContaining(String text);
+  List<Post> findByTitleContainingIgnoreCase(String text);
 	
 
 }
